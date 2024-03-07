@@ -1,0 +1,72 @@
+live_config_reload = true
+
+# Default colors
+[colors.primary]
+background = '#222436'
+foreground = '#c8d3f5'
+
+# Normal colors
+[colors.normal]
+black = '#1b1d2b'
+red = '#ff757f'
+green = '#c3e88d'
+yellow = '#ffc777'
+blue = '#82aaff'
+magenta = '#c099ff'
+cyan = '#86e1fc'
+white = '#828bb8'
+
+# Bright colors
+[colors.bright]
+black = '#444a73'
+red = '#ff757f'
+green = '#c3e88d'
+yellow = '#ffc777'
+blue = '#82aaff'
+magenta = '#c099ff'
+cyan = '#86e1fc'
+white = '#c8d3f5'
+
+[cursor]
+style = "Underline"
+unfocused_hollow = true
+
+[font]
+size = 19.0
+
+[font.bold]
+family = "SauceCodePro Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "SauceCodePro Nerd Font Mono"
+style = "MediumItalic"
+
+[font.normal]
+family = "SauceCodePro Nerd Font Mono"
+style = "Medium"
+
+[font.offset]
+x = 0
+y = 0
+
+[scrolling]
+history = 20000
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[shell]
+args = ["-l"]
+program = "/bin/zsh"
+
+[window]
+decorations = "none"
+dynamic_padding = false
+startup_mode = "Maximized"
+
+[window.padding]
+x = 10
+y = 0
