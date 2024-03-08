@@ -1,0 +1,3 @@
+# set editing mode in rails console (and could affect some other places like elixir)
+set editing-mode vi
+set keymap vi
