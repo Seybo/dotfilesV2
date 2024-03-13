@@ -176,7 +176,7 @@ eval "$(direnv hook zsh)"
 export DIRENV_LOG_FORMAT=
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"

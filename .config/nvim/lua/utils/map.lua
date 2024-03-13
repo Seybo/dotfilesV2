@@ -1,5 +1,3 @@
-local M = {}
-
 local default_options = { noremap = true, silent = true }
 
 _G.map = function(mapping)

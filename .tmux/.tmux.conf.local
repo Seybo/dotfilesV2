@@ -127,7 +127,7 @@ bind t set -g status off
 bind T set -g status on
 
 # generated manually in vim by plugin tmuxline (works with airline) and command :TmuxlineSnapshot
-source-file ~/.myconfig/tmuxline_colorscheme.conf
+source-file $HOME/.tmux/tmuxline_colorscheme.conf
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run -b '~/.tmux/plugins/tpm/tpm'
+run -b '$HOME/.tmux/plugins/tpm/tpm'
