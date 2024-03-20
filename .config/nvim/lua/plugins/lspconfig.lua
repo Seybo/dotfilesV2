@@ -4,12 +4,14 @@ function M.setup()
     local mason = require "mason"
     local mason_cfg = require "mason-lspconfig"
     local lsp_cfg = require "lspconfig"
+    local util = require "lspconfig/util"
     local neodev = require "neodev"
 
     mason.setup {}
 
     mason_cfg.setup {
         ensure_installed = {
+            -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
             "cssls",
             "html",
             "jsonls",
@@ -20,6 +22,7 @@ function M.setup()
             "vimls",
             "yamlls",
             "eslint",
+            "pylsp", -- for linter use ruff
         },
     }
 
@@ -55,7 +58,7 @@ function M.setup()
     -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#solargraph
     lsp_cfg.solargraph.setup {
         cmd = { "rbenv", "exec", "solargraph", "stdio" },
-        root_dir = lsp_cfg.util.root_pattern("Gemfile", ".git", "."),
+        root_dir = util.root_pattern("Gemfile", ".git", "."),
         init_options = {
             autoformat = true,
             formatting = true,
@@ -80,6 +83,9 @@ function M.setup()
     lsp_cfg.rubocop.setup {
         cmd = { "rbenv", "exec", "bundle", "exec", "rubocop", "--lsp" },
     }
+
+    -- Python
+    lsp_cfg.pylsp.setup {}
 end
 
 return M

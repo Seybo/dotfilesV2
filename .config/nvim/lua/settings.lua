@@ -72,3 +72,4 @@ vim.o.updatetime = 1000
 -- to remove checkhealth warning: "Neovim::Ext" cpan module is not installed
 vim.g.loaded_perl_provider = 0
 -- vim.g.ruby_host_prog = "~/.rbenv/versions/2.7.6/bin/neovim-ruby-host"
+vim.g.python3_host_prog = "$HOME/.pyenv/versions/3.12.2/bin/python"

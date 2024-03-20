@@ -181,6 +181,12 @@ export DIRENV_LOG_FORMAT=
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# python
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+
 # opening files with fzf
 fop() {  # fop stands for FZF Open
   fzf | xargs -I {} vim {}

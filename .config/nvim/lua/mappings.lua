@@ -54,8 +54,8 @@ vim.keymap.set("n", "<Home>", "0", { silent = true })
 vim.keymap.set("v", "<End>", "$", { silent = true })
 vim.keymap.set("v", "<Home>", "0", { silent = true })
 -- add empty line above/below
-vim.keymap.set("n", "<CR>j", ":<C-u>normal! o<CR>", { silent = true })
-vim.keymap.set("n", "<CR>k", ":<C-u>normal! O<CR>", { silent = true })
+vim.keymap.set("n", "<CR>j", ":<C-u>normal! o<CR>k", { silent = true })
+vim.keymap.set("n", "<CR>k", ":<C-u>normal! O<CR>j", { silent = true })
 -- Cut to underscores
 vim.keymap.set("n", "cu", "ct_", { silent = true })
 vim.keymap.set("n", "c2u", "c2t_", { silent = true })
