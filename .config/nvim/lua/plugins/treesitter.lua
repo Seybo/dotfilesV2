@@ -4,6 +4,7 @@ function M.setup()
     local plugin = require "nvim-treesitter.configs"
 
     plugin.setup {
+        auto_install = true,
         highlight = {
             enable = true,
             use_languagetree = true,
@@ -37,31 +38,6 @@ function M.setup()
             select = {
                 enable = true,
                 lookahead = true,
-                keymaps = {
-                    ["af"] = "@function.outer",
-                    ["if"] = "@function.inner",
-                    ["ar"] = "@return.outer",
-                    ["ir"] = "@return.inner",
-                    ["ab"] = "@block.outer",
-                    ["ib"] = "@block.inner",
-                    ["ae"] = "@class.outer",
-                    ["ie"] = "@class.inner",
-                    ["ac"] = "@comment.outer",
-                    ["ic"] = "@comment.inner",
-                    ["ap"] = "@parameter.outer",
-                    ["ip"] = "@parameter.inner",
-                    ["am"] = "@conditional.outer",
-                    ["im"] = "@conditional.inner",
-                    ["aa"] = "@assignment.outer",
-                    ["ian"] = "@assignment.lhs",
-                    ["iav"] = "@assignment.rhs",
-                    ["as"] = "@statement.outer",
-                    ["is"] = "@statement.inner",
-                    ["al"] = "@loop.outer",
-                    ["il"] = "@loop.inner",
-                    ["ax"] = "@call.outer",
-                    ["ix"] = "@call.inner",
-                },
             },
             move = {
                 enable = true,
