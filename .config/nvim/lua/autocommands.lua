@@ -91,6 +91,16 @@ local autocmds = {
             command = "set filetype=ruby",
         },
     },
+
+    {
+        { "FileType" },
+        {
+            pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+            callback = function()
+                vim.api.nvim_buf_set_keymap(0, "n", "gf", "<cmd>lua vim.lsp.buf.definition()<CR>",
+                    { noremap = true, silent = true })
+            end,
+        } },
 }
 
 -- START: ad-hoc fold methods

@@ -86,6 +86,7 @@ function M.setup()
 
     -- Python
     lsp_cfg.pylsp.setup {}
+    lsp_cfg.graphql.setup {}
 end
 
 return M
