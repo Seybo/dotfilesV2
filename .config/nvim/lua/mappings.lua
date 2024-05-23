@@ -9,7 +9,7 @@ map {
 
 vim.keymap.set("i", "jj", "<Esc>", { silent = true })
 vim.keymap.set("i", "JJ", "<Esc>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<Leader>", "<Nop>", { silent = true })
+vim.keymap.set({ "n", "v" }, "zz", "zz:nohlsearch<CR>", { silent = true })
 vim.keymap.set({ "n", "v", "t" }, "Q", ":qa<CR>", { silent = true }) -- exit vim
 vim.keymap.set("n", "qd", ":q<CR>", { silent = true })               -- close winDow
 vim.keymap.set("n", "<C-s>", ":w<CR>", { silent = true })
@@ -65,7 +65,7 @@ vim.keymap.set("n", "c3u", "c3t_", { silent = true })
 vim.keymap.set("n", "<C-f><C-r>", ":e!<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>fot", ":e ./_mydev/temp.md<CR>", { silent = true })
 -- filenames copying
-vim.keymap.set("n", "<A-f>pa", ":let @+ = expand('%:p')<CR>", { silent = true }) -- absulute
+vim.keymap.set("n", "<A-f>pa", ":let @+ = expand('%:p')<CR>", { silent = true }) -- absolute
 vim.keymap.set("n", "<A-f>pr", ":let @+ = expand('%')<CR>", { silent = true })   -- relative
 vim.keymap.set("n", "<A-f>pf", ":let @+ = expand('%:t')<CR>", { silent = true }) -- filename
 
@@ -102,9 +102,52 @@ local function select_text_up_to_dot()
     vim.fn.feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), "")
 end
 
+local function select_text_up_to_dot_or_quote()
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local line = vim.api.nvim_get_current_line()
+
+    -- Adjusting for 0-based indexing in Vim
+    col = col + 1
+
+    local before_cursor = line:sub(1, col - 1)
+    local after_cursor = line:sub(col)
+
+    -- Detect if the cursor is within quotes and adjust the bounds accordingly
+    local quote_type = before_cursor:match("(['\"])[^%s]*$")
+    local start_quote, end_quote
+    if quote_type then
+        -- Find the starting position of the preceding quote
+        start_quote = before_cursor:reverse():find(quote_type)
+        start_quote = start_quote and (#before_cursor - start_quote + 2) -- +2 to move after the quote
+        -- Find the ending position of the following quote
+        end_quote = after_cursor:find(quote_type)
+        end_quote = end_quote and (col + end_quote - 2) -- -2 to exclude the quote itself
+    end
+
+    local start_col, end_col
+    if start_quote and end_quote then
+        -- If within quotes, adjust start and end based on quotes' positions
+        start_col = start_quote
+        end_col = end_quote
+    else
+        -- Normal operation, calculate start and end positions for selection
+        local reverse_index = before_cursor:reverse():find("%s")
+        start_col = reverse_index and (#before_cursor - reverse_index + 2) or 1
+        end_col = after_cursor:find("%.") and (col + after_cursor:find("%.") - 2) or (col + #after_cursor - 1)
+    end
+
+    -- Preparing key sequence for visual selection
+    local move_to_start = "0" .. string.rep("l", start_col - 1)
+    local select_to_end = "v" .. string.rep("l", end_col - start_col)
+
+    -- Combining commands and executing
+    local keys = move_to_start .. select_to_end
+    vim.fn.feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), "")
+end
+
 -- gf for rails calls like Foo::Bar::Baz.call
 vim.keymap.set("n", "<A-g><A-f>", function()
-    select_text_up_to_dot()
+    select_text_up_to_dot_or_quote()
     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("gf", true, false, true), "x")
 end, { noremap = true, silent = true })
 
@@ -190,10 +233,10 @@ vim.keymap.set("n", "sr", "<c-w>r", { silent = true })        -- rotate
 vim.keymap.set("n", "sH", "<c-w>H", { silent = true })        -- horizontal => vertical
 vim.keymap.set("n", "sK", "<c-w>K", { silent = true })        -- vertical => horizontal
 -- resizing
-vim.keymap.set("n", "<right>", ":5wincmd ><CR>", { silent = true })
-vim.keymap.set("n", "<left>", ":5wincmd <<CR>", { silent = true })
-vim.keymap.set("n", "<up>", ":3wincmd +<CR>", { silent = true })
-vim.keymap.set("n", "<down>", ":3wincmd -<CR>", { silent = true })
+vim.keymap.set("n", "<right>", ":5wincmd <<CR>", { silent = true })
+vim.keymap.set("n", "<left>", ":5wincmd ><CR>", { silent = true })
+vim.keymap.set("n", "<up>", ":3wincmd -<CR>", { silent = true })
+vim.keymap.set("n", "<down>", ":3wincmd +<CR>", { silent = true })
 
 -- -- [[ Spellcheck ]] -- --
 
