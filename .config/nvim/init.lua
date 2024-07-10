@@ -7,6 +7,7 @@ require "settings"
 require "utils.autoload"
 require "theme"
 require "autocommands"
+require "rus"
 
 require "colorizer".setup() -- TODO_MM: for some reason it doesnt work in the plugin config
 vim.o.path = vim.o.path .. ",_mydev/**"
