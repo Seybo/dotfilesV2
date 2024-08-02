@@ -87,6 +87,9 @@ function M.setup()
     -- Python
     lsp_cfg.pylsp.setup {}
     lsp_cfg.graphql.setup {}
+
+    -- Rust
+    lsp_cfg.rust_analyzer.setup {}
 end
 
 return M

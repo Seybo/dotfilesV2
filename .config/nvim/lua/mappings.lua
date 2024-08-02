@@ -60,6 +60,10 @@ vim.keymap.set("n", "<CR>k", ":<C-u>normal! O<CR>j", { silent = true })
 vim.keymap.set("n", "cu", "ct_", { silent = true })
 vim.keymap.set("n", "c2u", "c2t_", { silent = true })
 vim.keymap.set("n", "c3u", "c3t_", { silent = true })
+-- Delete to underscores
+vim.keymap.set("n", "du", "dt_", { silent = true })
+vim.keymap.set("n", "d2u", "d2t_", { silent = true })
+vim.keymap.set("n", "d3u", "d3t_", { silent = true })
 
 -- -- [[ Files ]] -- --
 vim.keymap.set("n", "<C-f><C-r>", ":e!<CR>", { silent = true })
