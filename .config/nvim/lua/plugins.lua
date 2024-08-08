@@ -110,9 +110,9 @@ local plugins = {
     },
 
     -- autocompletions
-    { -- supports LSP
+    {
         "hrsh7th/nvim-cmp",
-        version = "*",
+        branch = "main",
         event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
