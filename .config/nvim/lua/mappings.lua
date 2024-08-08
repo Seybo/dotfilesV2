@@ -45,7 +45,7 @@ vim.keymap.set("v", "<A-.>", ":t'><CR>", { silent = true })      -- duplicate se
 vim.keymap.set("n", "<A-u>", ":BufstopBack<CR>", { silent = true })
 vim.keymap.set("n", "<A-m>", ":BufstopForward<CR>", { silent = true })
 -- Bufkill plugin mapping
-vim.keymap.set("n", "qq", ":BD<CR>", { silent = true })
+vim.keymap.set("n", "qq", ":BW<CR>", { silent = true })
 -- vim-rails
 vim.keymap.set("n", "ra", ":A<CR>", { silent = true }) -- switch to spec
 -- go to beginning/end of line
