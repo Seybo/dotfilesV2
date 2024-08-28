@@ -8,15 +8,15 @@ return {
         t("debugger; // eslint-disable-line REVERT_MM:"),
     }),
     s("clg (console.log)", {
-        t("console.log(`TODO_MM: ${"),
+        t("console.log('TODO_MM: "),
         i(1, "message"),
-        t("}`)"),
+        t("')"),
     }),
     s("clg2 (console.log)", {
         t("console.log(`TODO_MM "),
         i(1, "message"),
-        t(": ${"),
-        i(2, "message"),
+        t(": ${JSON.stringify("),
+        i(2, "message)"),
         t("}`)"),
     }),
     s("tds (START_MM:)", {

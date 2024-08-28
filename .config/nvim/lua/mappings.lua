@@ -64,6 +64,48 @@ vim.keymap.set("n", "c3u", "c3t_", { silent = true })
 vim.keymap.set("n", "du", "dt_", { silent = true })
 vim.keymap.set("n", "d2u", "d2t_", { silent = true })
 vim.keymap.set("n", "d3u", "d3t_", { silent = true })
+-- Delete to next uppercase character
+local function delete_to_next_uppercase()
+    -- Get the character under the cursor
+    local col = vim.fn.col(".")
+    local char = vim.fn.getline("."):sub(col, col)
+
+    -- Check if the character is uppercase
+    if char:match("%u") then
+        -- If it's uppercase, delete it first and then search for the next uppercase
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("xd/\\u<CR>", true, false, true), "n", true)
+    else
+        -- If it's not uppercase, just delete up to the next uppercase character
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("d/\\u<CR>", true, false, true), "n", true)
+    end
+
+    -- Schedule the nohlsearch to ensure it runs after the search and delete
+    vim.schedule(function()
+        vim.cmd("nohlsearch")
+    end)
+end
+-- Cut to next uppercase character
+local function cut_to_next_uppercase()
+    -- Get the character under the cursor
+    local col = vim.fn.col(".")
+    local char = vim.fn.getline("."):sub(col, col)
+
+    -- Check if the character is uppercase
+    if char:match("%u") then
+        -- If it's uppercase, delete it first and then search for the next uppercase
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("xc/\\u<CR>", true, false, true), "n", true)
+    else
+        -- If it's not uppercase, just delete up to the next uppercase character
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("c/\\u<CR>", true, false, true), "n", true)
+    end
+
+    -- Schedule the nohlsearch to ensure it runs after the search and delete
+    vim.schedule(function()
+        vim.cmd("nohlsearch")
+    end)
+end
+vim.keymap.set("n", "dc", delete_to_next_uppercase, { noremap = true, silent = true })
+vim.keymap.set("n", "cc", cut_to_next_uppercase, { noremap = true, silent = true })
 
 -- -- [[ Files ]] -- --
 vim.keymap.set("n", "<C-f><C-r>", ":e!<CR>", { silent = true })
