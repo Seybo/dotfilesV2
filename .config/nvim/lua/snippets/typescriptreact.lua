@@ -15,7 +15,7 @@ return {
     s("clg2 (console.log)", {
         t("console.log(`TODO_MM "),
         i(1, "message"),
-        t(": ${"),
+        t(": ${JSON.stringify("),
         i(2, "message"),
         t("}`)"),
     }),

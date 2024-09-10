@@ -18,7 +18,7 @@ function M.setup()
             "lua_ls",
             "rubocop",
             "solargraph",
-            "tsserver",
+            "ts_ls",
             "vimls",
             "yamlls",
             "eslint",
@@ -27,7 +27,7 @@ function M.setup()
     }
 
     -- js
-    lsp_cfg.tsserver.setup {}
+    lsp_cfg.ts_ls.setup {}
     lsp_cfg.eslint.setup {
         settings = {
             eslint = {

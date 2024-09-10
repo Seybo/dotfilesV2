@@ -166,18 +166,21 @@ local plugins = {
         build = ":TSUpdate",
     },
 
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        version = "*",
-        event = "BufEnter",
-    },
+    -- {
+    --     "nvim-treesitter/nvim-treesitter-textobjects",
+    --     version = "*",
+    --     event = "BufEnter",
+    -- },
 
-    {
-        "ziontee113/syntax-tree-surfer",
-        version = "*",
-        event = "BufEnter",
-        config = require("plugins.syntax-tree-surfer").setup,
-    },
+    -- {
+    --     "ziontee113/syntax-tree-surfer",
+    --     version = "*",
+    --     dependencies = {
+    --         "nvim-treesitter/nvim-treesitter",
+    --     },
+    --     event = "BufEnter",
+    --     config = require("plugins.syntax-tree-surfer").setup,
+    -- },
 
     {
         "windwp/nvim-autopairs",
@@ -377,10 +380,10 @@ local plugins = {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
+        -- init = function()
+        --     vim.o.timeout = true
+        --     vim.o.timeoutlen = 300
+        -- end,
         config = require("plugins.which-key").setup,
     },
 
@@ -408,11 +411,11 @@ local plugins = {
         version = "*",
     },
 
-    {
-        "lukas-reineke/headlines.nvim",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = true,
-    },
+    -- {
+    --     "lukas-reineke/headlines.nvim",
+    --     dependencies = "nvim-treesitter/nvim-treesitter",
+    --     config = true,
+    -- },
 
     {
         "ellisonleao/glow.nvim",
