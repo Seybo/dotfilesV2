@@ -105,12 +105,12 @@ Pry.commands.alias_command '?', 'show-source -d'
 begin
   require 'awesome_print'
   AwesomePrint.defaults = {
-    indent: -2,
+    indent: -2
   }
   AwesomePrint.pry!
-rescue LoadError => err
+rescue LoadError => e
   begin
-    puts "no awesome_print :( #{err}"
+    puts "no awesome_print :( #{e}"
     puts 'trying amazing_print'
     require 'amazing_print'
     AmazingPrint.pry!
@@ -238,7 +238,6 @@ ENV['PAGER'] = ' less --raw-control-chars -F -X'
 # by default, set up the debug shortcuts
 pry_debug
 puts "Loaded ~/.pryrc. Run 'more_help' or 'display_shortcuts' for more tips"
-
 
 # seybo START
 # Projects related

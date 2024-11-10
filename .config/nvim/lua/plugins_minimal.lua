@@ -16,11 +16,29 @@ vim.opt.rtp:prepend(lazypath)
 local lazy = require "lazy"
 
 local plugins = {
-    {
-        "tpope/vim-rails",
+    { -- whitespace trimming autocommand needs it
+        "echasnovski/mini.trailspace",
         version = "*",
-        event = { "BufReadPre", "BufNewFile" },
-        config = require("plugins.vim-rails").setup,
+        event = "BufEnter",
+        config = require("plugins.mini-trailspace").setup,
+    },
+
+    {
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = require("plugins.telescope").setup,
+    },
+
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        },
+        config = require("plugins.neo-tree").setup,
     },
 }
 

@@ -122,34 +122,9 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = t
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
 vim.keymap.set("n", "gf", vim.lsp.buf.definition, { noremap = true })
 vim.keymap.set("n", "<space>f", function() vim.lsp.buf.format { async = true } end)
-local function select_text_up_to_dot()
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    local line = vim.api.nvim_get_current_line()
-
-    col = col + 1 -- Adjusting for 0-based indexing
-
-    local before_cursor = line:sub(1, col - 1)
-    local after_cursor = line:sub(col)
-
-    -- Calculate start and end positions for selection
-    local reverse_index = before_cursor:reverse():find("%s")
-    local start_col = reverse_index and (#before_cursor - reverse_index + 2) or 1
-
-    local end_col = after_cursor:find("%.") and (col + after_cursor:find("%.") - 2) or (col + #after_cursor - 1)
-
-    -- Preparing key sequence for visual selection
-    -- Moving to start position
-    local move_to_start = "0" .. string.rep("l", start_col - 1)
-    -- Starting visual mode and moving to end position
-    local select_to_end = "v" .. string.rep("l", end_col - start_col)
-
-    -- Combining commands and executing
-    local keys = move_to_start .. select_to_end
-    vim.fn.feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), "")
-end
 
 local function select_text_up_to_dot_or_quote()
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local _row, col = unpack(vim.api.nvim_win_get_cursor(0))
     local line = vim.api.nvim_get_current_line()
 
     -- Adjusting for 0-based indexing in Vim
