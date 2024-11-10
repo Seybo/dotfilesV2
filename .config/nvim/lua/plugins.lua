@@ -367,7 +367,11 @@ local plugins = {
     { -- fancy indentation with . . .
         "lukas-reineke/indent-blankline.nvim",
         version = "*",
+        -- TODO_MM: remove, there is a temp issue with the latest nvim build (fails on load)
+        tag = "v3.8.2",
         main = "ibl",
+        ---@module "ibl"
+        ---@type ibl.config
         config = require("plugins.indent-blankline").setup,
     },
 
