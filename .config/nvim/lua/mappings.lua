@@ -254,10 +254,14 @@ vim.keymap.set("n", "sr", "<c-w>r", { silent = true })        -- rotate
 vim.keymap.set("n", "sH", "<c-w>H", { silent = true })        -- horizontal => vertical
 vim.keymap.set("n", "sK", "<c-w>K", { silent = true })        -- vertical => horizontal
 -- resizing
-vim.keymap.set("n", "<right>", ":5wincmd <<CR>", { silent = true })
-vim.keymap.set("n", "<left>", ":5wincmd ><CR>", { silent = true })
-vim.keymap.set("n", "<up>", ":3wincmd -<CR>", { silent = true })
-vim.keymap.set("n", "<down>", ":3wincmd +<CR>", { silent = true })
+-- vim.keymap.set("n", "<right>", ":5wincmd ><CR>", { silent = true })
+-- vim.keymap.set("n", "<left>", ":5wincmd <<CR>", { silent = true })
+-- vim.keymap.set("n", "<up>", ":3wincmd -<CR>", { silent = true })
+-- vim.keymap.set("n", "<down>", ":3wincmd +<CR>", { silent = true })
+vim.keymap.set("n", "<right>", function() vim.cmd("vertical resize +" .. 5) end, { silent = true })
+vim.keymap.set("n", "<left>", function() vim.cmd("vertical resize -" .. 5) end, { silent = true })
+vim.keymap.set("n", "<up>", function() vim.cmd("resize +" .. 3) end, { silent = true })
+vim.keymap.set("n", "<down>", function() vim.cmd("resize -" .. 3) end, { silent = true })
 
 -- -- [[ Spellcheck ]] -- --
 

@@ -62,6 +62,16 @@ function M.setup()
         })
     end
 
+    local function find_files_pop_pack_heartland()
+        builtin.find_files({
+            hidden = true,
+            no_ignore = false,
+            initial_mode = "insert",
+            previewer = true,
+            cwd = "./packs/heartland_pos",
+        })
+    end
+
     local function oldfiles()
         builtin.oldfiles({
             initial_mode = "insert",
@@ -110,6 +120,7 @@ function M.setup()
     map { "<Leader>b", "telescope buffers", builtin.buffers, mode = { "n" } }
     map { "<Leader>d", "telescope diagnostics", builtin.diagnostics, mode = { "n" } }
     map { "<Leader>ff", "telescope find files", find_files, mode = { "n" } }
+    map { "<Leader>fph", "telescope find files heartland", find_files_pop_pack_heartland, mode = { "n" } }
     map { "<Leader>sb", "telescope fuzzy search in current buffer", current_buffer_fuzzy_find, mode = { "n" } }
     map { "<Leader>ss", "telescope live grep (word)", builtin.grep_string, mode = { "n" } }
     map { "<Leader>ss", "telescope live grep (selection)", live_grep_visual, mode = { "v" } }

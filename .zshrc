@@ -165,9 +165,6 @@ export NVM_DIR="$HOME/.nvm"
 # fuck :)
 eval $(thefuck --alias)
 
-# dotfiles
-alias dfiles="/usr/bin/git --git-dir=$HOME/.dfiles/ --work-tree=$HOME"
-
 # autojump (installed with apt)
 . /usr/share/autojump/autojump.sh
 
@@ -191,6 +188,8 @@ eval "$(pyenv init -)"
 fop() {  # fop stands for FZF Open
   fzf | xargs -I {} vim {}
 }
+
+source ~/.dotfiles/.private_env
 
 # if it is not in the end bindings like scrolling the terminal output stop working for some reason
 if [ -z "$TMUX" ]; then

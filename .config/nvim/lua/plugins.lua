@@ -472,6 +472,22 @@ local plugins = {
         "windwp/nvim-projectconfig",
     },
 
+    {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        lazy = false,
+        version = false, -- set this if you want to always pull the latest change
+        build = "make",
+        dependencies = {
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below dependencies are optional,
+            "hrsh7th/nvim-cmp",
+            "nvim-tree/nvim-web-devicons",
+        },
+    },
+
     -- database
     {
         "tpope/vim-dadbod",
