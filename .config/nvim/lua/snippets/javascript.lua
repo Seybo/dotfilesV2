@@ -2,6 +2,7 @@ local plugin = require "luasnip"
 local s = plugin.snippet
 local t = plugin.text_node
 local i = plugin.insert_node
+local r = require("luasnip.extras").rep
 
 return {
     s("bpp (debugger)", {
@@ -19,10 +20,17 @@ return {
         i(2, "message"),
         t("}`)"),
     }),
+    s("clgv (console.log)", {
+        t("console.log(`TODO_MM "),
+        i(1, "var"),
+        t(": ${JSON.stringify("),
+        r(1),
+        t(")}`)"),
+    }),
     s("tds (START_MM:)", {
         t("// START_MM: "),
         i(1, ""),
-        t({ "", "" }),         -- linebreak
+        t({ "", "" }), -- linebreak
         t("// ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻"),
     }),
     s("tdd (TODO_MM:)", {
@@ -40,13 +48,13 @@ return {
     s("tdc (COMMENT_MM:)", {
         t("// COMMENT_MM: "),
         i(1, ""),
-        t({ "", "" }),         -- linebreak
+        t({ "", "" }), -- linebreak
         t("// ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻"),
     }),
     s("tdq (QUESTION_MM:)", {
         t("// QUESTION_MM: "),
         i(1, ""),
-        t({ "", "" }),         -- linebreak
+        t({ "", "" }), -- linebreak
         t("// ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻"),
     }),
 }
