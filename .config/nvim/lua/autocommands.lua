@@ -33,9 +33,9 @@ local autocmds = {
                     end
                 end
 
-                if client then -- format by lsp
-                    vim.lsp.buf.format { async = false }
-                else           -- just remove trailing whitespaces
+                if client.supports_method("textDocument/formatting") then
+                    vim.lsp.buf.format()
+                else -- just remove trailing whitespaces
                     local bufname = vim.fn.expand "<afile>"
                     local bufnr = vim.fn.bufnr(bufname)
 
@@ -114,9 +114,12 @@ for _, cmd in ipairs(foldmethod_autocmds) do
 end
 -- END: ad-hoc fold methods
 
+-- clear = true prevents duplicate autocmds
+local augroup = vim.api.nvim_create_augroup("MyAutoCommands", { clear = true })
 
 for _, x in ipairs(autocmds) do
     for _, event in ipairs(x[1]) do
-        vim.api.nvim_create_autocmd(event, x[2])
+        local opts = vim.tbl_extend("force", x[2], { group = augroup })
+        vim.api.nvim_create_autocmd(event, opts)
     end
 end

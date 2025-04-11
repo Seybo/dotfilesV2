@@ -478,6 +478,11 @@ local plugins = {
         lazy = false,
         version = false, -- set this if you want to always pull the latest change
         opts = {
+            provider = "claude",
+            -- provider = "openai",
+            -- openai = {
+            --     model = "o1-mini",
+            -- },
             mappings = {
                 sidebar = {
                     switch_windows = "<C-w>",

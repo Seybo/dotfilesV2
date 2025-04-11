@@ -144,7 +144,6 @@ function M.setup()
         { "<Leader>jq", todo_desc .. "(QUESTION_MM)", ts_keys .. "QUESTION_MM initial_mode=normal<CR>" },
         { "<Leader>jc", todo_desc .. "(COMMENT_MM)",  ts_keys .. "COMMENT_MM initial_mode=normal<CR>" },
         { "<Leader>ja", todo_desc .. "(all _MM)",     ts_grep .. "\"_MM:\", initial_mode=\"normal\"})<CR>" },
-        { "<Leader>jb", todo_desc .. "(BOOKMARK_MM)", ts_keys .. "BOOKMARK_MM initial_mode=normal<CR>" },
         { "<Leader>jp", "telescope binding.pry",      ts_grep .. "\" binding.pry\"})<CR>" },
         { "<Leader>jd", "telescope debugger",         ts_grep .. "\"debugger; // eslint-disable-line\"})<CR>" },
     }
